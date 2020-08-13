@@ -1,26 +1,36 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import Produto from './Produto';
+import './App.css'
 
-function App() {
+const App = () => {
+
+  const [dados, setDados] = React.useState(null);
+
+  async function handleClick( event ) {
+    const response = await fetch(`https://ranekapi.origamid.dev/json/api/produto/${event.target.innerText}`);
+
+    const json = await response.json();
+    setDados(json);
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="container">
+      
+     <div className="groupButtons">
+        <button className="button" onClick={handleClick}>notebook</button>
+        <button className="button" onClick={handleClick}>tablet</button>
+        <button className="button" onClick={handleClick}>smartphone</button>
+     </div>
+    
+
+      {dados && 
+       <div className="produto">
+        <Produto  dados={dados}/>
+     </div>
+       } 
+
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
