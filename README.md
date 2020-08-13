@@ -4,11 +4,13 @@ Este é um projeto simple, consumindo uma API em React.js
 
 
 Libs utilizadas
+
  React
 
 Status do Projeto: Finalizado ✔️
 
 Como rodar a aplicação
+
 Tenha o node e npm baixados.
 
 No terminal clone o projeto:
